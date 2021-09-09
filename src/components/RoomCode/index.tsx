@@ -2,10 +2,10 @@
 import toast from 'react-hot-toast';
 
 //Imagens
-import copyImg from '../assets/images/copy.svg'
+import copyImg from '../../assets/images/copy.svg'
 
 //scss
-import '../assets/styles/room-code.scss';
+import './styles.scss';
 
 ////////////////////////////////////////////////////////////////////////////////
 

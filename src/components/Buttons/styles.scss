@@ -12,6 +12,12 @@
     border: 0;
     transition: filter 0.2s;
 
+    &.Outlined{
+        background: #fff;
+        color: #835afd;
+        border: 1px solid #835afd;        
+    }
+    
     img {
         margin-right: 8px;
     }
@@ -27,3 +33,4 @@
 
 
 }
+

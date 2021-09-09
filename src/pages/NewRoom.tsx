@@ -25,6 +25,7 @@ export function NewRoom() {
 
     //usado para navegar entre telas
     const history = useHistory();
+
     const [newRoom, setNewRoom] = useState('');
 
     //função para Criar a sala
@@ -50,7 +51,7 @@ export function NewRoom() {
 
         /*se tudo der okay ira direcionar para a sala, com a key 
         (obs: esta sendo utilizado craze aqui (``) ao invés de ('') )*/
-        history.push(`/rooms/${firebaseRoom.key}`);
+        history.push(`/admin/rooms/${firebaseRoom.key}`);
     }
 
     //puxa os contextos compartilhados entre as telas

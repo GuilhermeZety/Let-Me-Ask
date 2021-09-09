@@ -11,6 +11,7 @@ import { Room } from './pages/Room';
 
 //scss
 import './assets/styles/global.scss';
+import { AdminRoom } from './pages/AdminRoom';
 
 //função principal
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <AuthContextProvider>
         <Switch>
           <Route path="/" exact component={Home} />
+          <Route path="/admin/rooms/:id" component={AdminRoom} />
           <Route path="/rooms/new" component={NewRoom} />
           <Route path="/rooms/:id" component={Room} />
         </Switch>

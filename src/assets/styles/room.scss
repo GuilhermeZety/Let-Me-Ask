@@ -12,13 +12,17 @@
             align-items: center;
 
             img {
-                max-height: 45px;
+                max-height: 40px;
             }
 
-            .rightHeader {
+            > div {
                 display: flex;
-                align-items: center;
-              
+                align-items: center;    
+                gap: 16px;
+                
+                > Button {
+                    height: 40px;
+                }
             }
         }
     }
@@ -102,6 +106,10 @@
                     }
                 }
             }
+
+        }
+        .question-list{
+            margin-top: 32px;
         }
     }
 }

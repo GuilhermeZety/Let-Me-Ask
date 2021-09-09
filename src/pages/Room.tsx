@@ -1,14 +1,16 @@
 //react
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { useParams, Link } from "react-router-dom"
 import { Toaster, toast } from "react-hot-toast";
 
 //hooks
 import { useAuth } from "../hooks/useAuth";
+import { useRoom, } from "../hooks/useRoom";
 
 //components
-import { Button } from "../components/Buttons";
-import { RoomCode } from "../components/RoomCode";
+import { Button } from "../components/Buttons/index";
+import { RoomCode } from "../components/RoomCode/index";
+import { Question } from "../components/Question/index";
 
 //images
 import logoImg from "../assets/images/logo.svg";
@@ -16,38 +18,13 @@ import logoImg from "../assets/images/logo.svg";
 //scss
 import "../assets/styles/room.scss"
 import { database } from "../Services/firebase";
-import { Question } from "../components/Question";
 
 ////////////////////////////////////////////////////////////////////////////////
 
-//type
 //define que tipo de paramentos ele vai receber 
 type RoomsParams = {
     id: string;
 }
-
-//seta um objeto/tipo para que seja escrevido as coisas do banco, aqui, localmente
-type FirebaseQuestions = Record<string, {
-    author: {
-        name: string;
-        avatar: string;
-    }
-    content: string;
-    isHighLighted: boolean;
-    isAnswered: boolean;
-}>
-
-type Question = {
-    id: string;
-    author: {
-        name: string;
-        avatar: string;
-    }
-    content: string;
-    isHighLighted: boolean;
-    isAnswered: boolean;
-}
-
 
 //função principal da sala
 export function Room() {
@@ -60,42 +37,10 @@ export function Room() {
     //deixando mais explicito o id dos parâmetros
     const roomId = params.id;
 
+    const { questions, title } = useRoom(roomId);
+
     //seta um estado para a a nova pergunta
     const [newQuestion, setNewQuestion] = useState("");
-
-    const [title, setTitle] = useState("")
-
-    const [questions, setQuestions] = useState<Question[]>([])
-
-    useEffect(() => {
-        //referencia tal linha no banco para que seja acessado, mostrado ou modificado
-        const roomRef = database.ref(`rooms/${roomId}`);
-
-        //entra na sala e pega os valores
-        roomRef.on('value', room => {
-
-            //acessa os valores da room, ou seja, tudo que contem nela...
-            const databaseRoom = room.val()
-
-            //puxa todas as question, no modelo type firebaseQuestions
-            const firebaseQuestions: FirebaseQuestions = databaseRoom.questions ?? {};
-
-            //aqui é onde ele converte o modelo em objeto vindo do banco para aray para uso local
-            const parsedQuestion = Object.entries(firebaseQuestions).map(([key, value]) => {
-                return {
-                    id: key,
-                    content: value.content,
-                    author: value.author,
-                    isHighLighted: value.isHighLighted,
-                    isAnswered: value.isAnswered,
-                }
-            })
-
-            setTitle(databaseRoom.title)
-
-            setQuestions(parsedQuestion)
-        })
-    }, [roomId])
 
     //função para criar uma nova função
     async function handleCreateNewQuestion(event: FormEvent) {
@@ -132,6 +77,18 @@ export function Room() {
         toast.success('Pergunta Enviada Com Sucesso')
     }
 
+    async function handleLikeQuestion(questionId: string, likedId?: string) {
+        debugger;
+        if (likedId) {
+            database.ref(`rooms/${roomId}/questions/${questionId}/likes/${likedId}`).remove()
+        }
+        else {
+            database.ref(`rooms/${roomId}/questions/${questionId}/likes`).push({
+                authorId: user?.id,
+            })
+        }
+    }
+
     //retorna um valor em html
     return (
         <div id="page-room">
@@ -139,9 +96,7 @@ export function Room() {
                 <div><Toaster /></div>
                 <div className="content">
                     <img src={logoImg} alt="LetMeAsk" />
-                    <div className="rightHeader">
-                        <RoomCode code={roomId} />
-                    </div>
+                    <RoomCode code={roomId} />
                 </div>
             </header>
 
@@ -177,12 +132,33 @@ export function Room() {
                     </div>
                 </form>
 
-                {questions.map(question => {
-                    return (
-                        <Question content={question.content} author={question.author} />
-                    )
-                }
-                )}
+                <div className="question-list">
+                    {questions.map(question => {
+                        return (
+                            <Question
+                                key={question.id}
+                                content={question.content}
+                                author={question.author}
+                                isAnswered={question.isAnswered}
+                                isHighLighted={question.isHighLighted}
+                            >
+                                {!question.isAnswered && (<button
+                                    className={`like-button ${question.LikedId ? 'liked' : ''}`}
+                                    type="button"
+                                    aria-label="Mark As You Like"
+                                    onClick={() => handleLikeQuestion(question.id, question.LikedId)}
+                                >
+                                    {question.likesCount > 0 && <span>{question.likesCount}</span>}
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M7 22H4C3.46957 22 2.96086 21.7893 2.58579 21.4142C2.21071 21.0391 2 20.5304 2 20V13C2 12.4696 2.21071 11.9609 2.58579 11.5858C2.96086 11.2107 3.46957 11 4 11H7M14 9V5C14 4.20435 13.6839 3.44129 13.1213 2.87868C12.5587 2.31607 11.7956 2 11 2L7 11V22H18.28C18.7623 22.0055 19.2304 21.8364 19.5979 21.524C19.9654 21.2116 20.2077 20.7769 20.28 20.3L21.66 11.3C21.7035 11.0134 21.6842 10.7207 21.6033 10.4423C21.5225 10.1638 21.3821 9.90629 21.1919 9.68751C21.0016 9.46873 20.7661 9.29393 20.5016 9.17522C20.2371 9.0565 19.9499 8.99672 19.66 9H14Z" stroke="#737380" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+
+                                </button>)}
+                            </Question>
+                        )
+                    }
+                    )}
+                </div>
             </main>
         </div >
     )

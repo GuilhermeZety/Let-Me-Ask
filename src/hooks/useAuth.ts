@@ -1,4 +1,7 @@
+//react
 import { useContext } from 'react'
+
+//contextos
 import { AuthContext } from '../contexts/AuthContext'
 
 //basicamente ele exporta a junção necessária para que consiga acessar as informações da autenticação

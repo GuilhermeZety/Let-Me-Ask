@@ -15,7 +15,7 @@
     
     &.highlighted {
         background: #f4f0ff;
-        border: 1px solid #835afd;
+        border: 1px solid var(--primary-color);
         
         footer .user-info span {
             color: #29292e            
@@ -50,7 +50,7 @@
                 margin-left: 8px;
                 color: #737380;
                 cursor: default;
-                font-size: 14px;
+                font-size: 1.4rem;
                 font-family: "Poppins", sans-serif;
             }
 
@@ -74,10 +74,10 @@
                 transition: filter 0.2s;
                 gap: 8px;
                 &.liked {
-                    color: #835afd;
+                    color: var(--primary-color);
 
                     svg path{
-                        stroke: #835afd;                        
+                        stroke: var(--primary-color);                        
                         cursor: pointer;
                     }
                 }
@@ -89,12 +89,12 @@
             }
 
             &.high-light {                 
-                color: #835afd;
+                color: var(--primary-color);
 
                 &.highlighted{
 
                     svg path{
-                    stroke: #835afd;
+                    stroke: var(--primary-color);
                     }
                 }
                 &:hover {

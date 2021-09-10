@@ -5,13 +5,13 @@
 
     aside {
         flex: 7;
-
-        background: #835afd;
-        color: #fff;
+        
+        background: var(--primary-color);
+        color: var(--white);
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 120px 80px;
+        padding: 12rem 80px;
 
         img {
             max-width: 320px;
@@ -19,15 +19,15 @@
 
         strong {
             font: 700 36px "Poppins", sans-serif;
-            line-height: 42px;
+            line-height: 4.2rem;
             margin-top: 16px;
         }
 
         p {
-            font-size: 24px;
-            line-height: 32px;
-            margin-top: 16px;
-            color: #f8f8f8
+            font-size: 2.4rem;
+            line-height: 3.2rem;
+            margin-top: 1.6rem;
+            color: var(--background-color);
         }
     }
 
@@ -53,7 +53,7 @@
         }
 
         h2 {
-            font-size: 24px;
+            font-size: 2.4rem;
             margin: 64px 0 24px;
             font-family: "Poppins", sans-serif;
         }
@@ -64,7 +64,7 @@
                 height: 50px;
                 border-radius: 8px;
                 padding: 0 16px;
-                background: #fff;
+                background: var(--white);
                 border: 1px solid #a8a8b3
             }
 
@@ -78,7 +78,7 @@
         }
         
         p {
-            font-size: 14px;
+            font-size: 1.4rem;
             color: #737380;
             margin-top: 16px;
 
@@ -101,7 +101,7 @@
         border-radius: 8px;
         font-weight: 500;
         background: #ea4335;
-        color: #fff;
+        color: var(--white);
 
         display: flex;
         justify-content: center;
@@ -122,7 +122,7 @@
 
     .separator { 
         display: flex;
-        font-size: 14px;
+        font-size: 1.4rem;
         color: #a8a8b3;
         margin: 32px 0;
         align-items: center;
@@ -142,5 +142,24 @@
             background: #a8a8b3;
             margin-left: 16px;
         }
+    }
+    
+    @media (max-width: 868px) {
+    
+        aside {
+            display: none !important;
+        }
+
+        main{
+            background: var(--primary-color) ;
+
+            .main-content {
+                background: var(--background-color);
+                padding: 30px;
+                border-radius: 10px;
+                box-shadow: #0e1e2512 0px 2px 4px 0px, #0e1e2532 0px 2px 16px 0px;
+            }
+        }
+    
     }
 }

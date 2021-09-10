@@ -4,11 +4,28 @@
     box-sizing: border-box;
 }
 
+html {
+    //seta como padrão, 1rem == 10px
+    font-size: 62.5%;
+    line-height: 62.5%;
+    
+    //variebles
+    --primary-color: #835afd;
+    --background-color: #f8f8f8;
+    --white: #FFF;
+}
+
 body {
-    background-color: #f8f8f8;
+    background-color: var(--background-color);
     color: #30303e;
+    font-size: 1.6rem;
 }
 
 body, input, button, textarea {
-    font: 400 16px "Roboto", sans-serif;
+    font: 400 1.6rem "Roboto", sans-serif;
+
+    &:focus-visible, &:focus {
+        outline: none;
+        box-shadow: 0px 0px 5px -1px var(--primary-color), inset 0px 0px 5px -1px var(--primary-color);
+    }
 }

@@ -24,8 +24,23 @@ body {
 body, input, button, textarea {
     font: 400 1.6rem "Roboto", sans-serif;
 
+    
+}
+
+input, .Button {
     &:focus-visible, &:focus {
         outline: none;
         box-shadow: 0px 0px 5px -1px var(--primary-color), inset 0px 0px 5px -1px var(--primary-color);
     }
+}
+
+textarea {
+    &:focus-visible, &:focus {
+        outline: none;
+        filter: drop-shadow(0px 0px 5px #835afd60);
+    }
+}
+
+button, a {
+    cursor: poiter;
 }

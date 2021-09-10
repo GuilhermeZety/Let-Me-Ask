@@ -1,3 +1,7 @@
+* {
+    transition: all 0.1s;
+}
+
 #page-room {
 
     header{
@@ -28,8 +32,9 @@
     }
 
     main {
-        max-width: 800px;
+        max-width: 850px;
         margin: 0 auto;
+        padding: 0 50px;
 
         .room-title {
             margin: 32px 0 24px;

@@ -29,6 +29,8 @@ Para acessar tambem, basta acessar este [link](letmeask-zety.web.app)
 
 ###Caso queira ver o código
 
-É necessario ter o Node.Js instalado em sua maquina... basta apenas clonar o repositório, escrever **yarn** no terminal (caso nao tenha o yarn instalado, basta apenas escrever **npm install -g yarn** )  
+Primeiro é necessario configurar o ambiente!
 
-Após concluido, basta apenas escrever **yarn start"" 
+[acesse este link para configurar](https://www.notion.so/Instala-o-das-ferramentas-2e3f74b481204a69a1189a4cfe54adc7)
+
+Após Totalmente configurado, basta apenas escrever **yarn start"" no terminal, dentro da pasta do projeto :)

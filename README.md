@@ -27,7 +27,7 @@ Projeto criado no NLW together :)
 Para acessar tambem, basta acessar este [link](letmeask-zety.web.app)
 
 
-###Caso queira ver o código
+## Caso queira ver o código
 
 Primeiro é necessario configurar o ambiente!
 

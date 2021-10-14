@@ -14,7 +14,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [ReactJS](https://github.com/elixir-lang/elixir)
 - [Typescript](https://github.com/topics/typescript)
-- [Firebase]
+- [Firebase](#)
 
 ## 💻 Projeto
 

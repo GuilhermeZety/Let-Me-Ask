@@ -1,13 +1,12 @@
 <h1 align="center">Let me Ask</h1>
 
-![image](https://user-images.githubusercontent.com/90266977/137398860-d11396e3-c553-44aa-a76b-7f8bc8118b9e.png)
-
-
 <p align="center">
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-como-executar">Como executar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 </p>
+
+![image](https://user-images.githubusercontent.com/90266977/137398860-d11396e3-c553-44aa-a76b-7f8bc8118b9e.png)
 
 ## ✨ Tecnologias
 
